@@ -1,5 +1,5 @@
 import React from "react";
-import Expenses from "./components/Expenses.jsx";
+import Expenses from "./components/Expenses/Expenses.jsx";
 
 const DUMMY_EXPENSES = [
   { id: "e1", title: "Car Insurance", price: 100, date: new Date(2025, 4, 5) },
@@ -14,9 +14,14 @@ const DUMMY_EXPENSES = [
 ];
 
 function App() {
+  const [expenses, setExpenses] = React.useState(DUMMY_EXPENSES)
+  
+  const addExpenses = (expense) => {
+    setExpenses((prevExpenses) => [...prevExpenses, expense]);
+  };
 
   return (
-    <Expenses expenses={DUMMY_EXPENSES}/>
+    <Expenses expenses={expenses} addExpenses={addExpenses} />
   );
 }
 
